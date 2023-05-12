@@ -5,7 +5,8 @@ import LandingPage from './components/Landing';
 import Nav from './components/Nav';
 import Detail from './components/Detail';
 import Form from './components/Form';
-
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:3001/';
 function App() {
   return (
     <div className="App">

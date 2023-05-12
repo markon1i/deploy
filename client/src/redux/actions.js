@@ -11,7 +11,7 @@ export const FILTER_CREATE = "FILTER_CREATE";
 
 export function getAllDogs() {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/dogs");
+    const json = await axios.get("/dogs");
     //console.log('soy action', json.data);
     return dispatch({ type: ALL_DOGS, payload: json.data });
   };
@@ -19,7 +19,7 @@ export function getAllDogs() {
 
 export function getDogs(name) {
   return async function (dispatch) {
-    const dog = (await axios.get(`http://localhost:3001/dogs?name=${name}`))
+    const dog = (await axios.get(`/dogs?name=${name}`))
       .data;
     //console.log('soy action', dog);
     return dispatch({ type: DOGS, payload: dog });
@@ -28,7 +28,7 @@ export function getDogs(name) {
 
 export function getDetail(id) {
   return async function (dispatch) {
-    const detail = (await axios.get(`http://localhost:3001/dogs/${id}`)).data;
+    const detail = (await axios.get(`/dogs/${id}`)).data;
     console.log("soy action", detail);
     return dispatch({ type: DETAIL, payload: detail });
   };
@@ -36,7 +36,7 @@ export function getDetail(id) {
 
 export function createDog(obj) {
   return async function (dispatch) {
-    const post = (await axios.post("http://localhost:3001/dogs", obj)).data;
+    const post = (await axios.post("/dogs", obj)).data;
     console.log("soy action", post);
     return dispatch({ type: POST, payload: post });
   };
@@ -44,7 +44,7 @@ export function createDog(obj) {
 
 export function getTemperament() {
   return async (dispatch) => {
-    let json = (await axios.get("http://localhost:3001/temperaments")).data;
+    let json = (await axios.get("/temperaments")).data;
     return dispatch({
       type: TEMPERAMENTS,
       payload: json,
